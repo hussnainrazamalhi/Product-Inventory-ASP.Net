@@ -1,0 +1,188 @@
+﻿@model WebApplication1.Employee
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <style>
+        /* Navbar Styling */
+        .navbar {
+            background-color: #007bff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            border-bottom: 2px solid #0056b3;
+        }
+
+            .navbar .navbar-brand {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .navbar .navbar-nav {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+            }
+
+                .navbar .navbar-nav li {
+                    margin-left: 15px;
+                }
+
+                .navbar .navbar-nav a {
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 1.1rem;
+                }
+
+                    .navbar .navbar-nav a:hover {
+                        text-decoration: underline;
+                    }
+
+        /* Card and Form Styling */
+        .card {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .form-actions {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+            .form-actions .btn-default {
+                background-color: #007bff;
+                border: none;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+                text-align: center;
+                text-decoration: none;
+            }
+
+                .form-actions .btn-default:hover {
+                    background-color: #0056b3;
+                }
+
+            .form-actions a {
+                color: #007bff;
+                text-decoration: none;
+                margin-left: 10px;
+            }
+
+                .form-actions a:hover {
+                    text-decoration: underline;
+                }
+
+        /* Definition List Styling */
+        dl.dl-horizontal {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+        }
+
+            dl.dl-horizontal dt {
+                width: 30%;
+                font-weight: bold;
+            }
+
+            dl.dl-horizontal dd {
+                width: 70%;
+                margin: 0 0 10px;
+            }
+
+        /* Miscellaneous */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2, h3, h4 {
+            color: #333;
+        }
+
+        hr {
+            border: 1px solid #ddd;
+        }
+
+        .container {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="container">
+        <h2>@ViewBag.Title</h2>
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Delete Product</h4>
+            </div>
+            <div class="card-body">
+                <h3>Are you sure you want to delete this?</h3>
+                <div>
+                    <h4>Employee</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Price)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Quantity)
+                        </dd>
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions">
+                            <input type="submit" value="Delete" class="btn btn-default" />
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
